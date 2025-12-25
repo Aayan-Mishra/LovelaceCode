@@ -174,7 +174,7 @@ The runtime should not.
 
 ## License & Contributions 📜
 
-Add a `LICENSE` file if publishing publicly.
+**MIT**
 
 Contributions are welcome:
 
