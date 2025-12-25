@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lovelace-code"
+version = "0.1.0"
+description = "Lovelace Code: an agentic terminal tool powered by open models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Lovelace Code Contributors" }]
+dependencies = [
+  "typer>=0.12.3",
+  "rich>=13.7.1",
+  "pydantic>=2.7.4",
+  "platformdirs>=4.2.2",
+  "huggingface-hub>=0.24.6",
+  "prompt_toolkit>=3.0.47",
+  "pygments>=2.18.0",
+  "gitpython>=3.1.43",
+  # API backends
+  "openai>=1.35.0",
+  "anthropic>=0.30.0",
+  "google-genai>=1.0.0",
+  # Local backends
+  "torch>=2.2.0",
+  "transformers>=4.44.0",
+  "accelerate>=0.33.0",
+]
+
+[project.optional-dependencies]
+llama = [
+  "llama-cpp-python>=0.2.88",
+]
+quantization = [
+  "bitsandbytes>=0.43.0",
+]
+
+[project.scripts]
+lovelace = "lovelace_code.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lovelace_code"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
